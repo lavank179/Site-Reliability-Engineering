@@ -1,0 +1,16 @@
+groups:
+ - name: Count greater than 5
+   rules:
+   - alert: CountGreaterThan5
+     expr: increase(request_processing_seconds_count[2m]) > 250
+     for: 10s
+ - name: Orders more than 15
+   rules:
+   - alert: Ordersmorethan15
+     expr: orders_created_total > 12
+     for: 10s
+ - name: ScrapeTargetDown
+   rules:
+   - alert: ScrapeTargetDownPY
+     expr: up{instance="host.docker.internal:8000", job="py"} < 1
+     for: 10s
