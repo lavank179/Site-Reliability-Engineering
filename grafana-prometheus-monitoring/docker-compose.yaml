@@ -5,11 +5,11 @@ services:
       - "3100:3100"
     command: -config.file=/etc/loki/local-config.yaml
 
-  promtail:
-    image: grafana/promtail:latest
-    volumes:
-      - /var/log:/var/log
-    command: -config.file=/etc/promtail/config.yml
+  # promtail:
+  #   image: grafana/promtail:latest
+  #   volumes:
+  #     - /var/log:/var/log
+  #   command: -config.file=/etc/promtail/config.yml
 
   grafana:
     environment:
@@ -57,20 +57,20 @@ services:
     ports:
       - "9100:9100"
 
-  prometheus:
-    image: prom/prometheus
-    ports:
-      - "9090:9090"
-    user: "1000:1000"
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-    volumes:
-      # - /media/homepc/FILES/lavan-practice/grafana-prometheus-monitoring/prometheus_data:/prometheus
-      # - "/media/homepc/FILES/lavan-practice/grafana-prometheus-monitoring/prometheus.yml:/etc/prometheus/prometheus.yml"
-      # - "/media/homepc/FILES/lavan-practice/grafana-prometheus-monitoring/prometheus-data:/prometheus"
-      - /home/ramlavan/Desktop/lavan-practice/grafana-prometheus-monitoring/prometheus_data:/prometheus
-      - /home/ramlavan/Desktop/lavan-practice/grafana-prometheus-monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
-      - /home/ramlavan/Desktop/lavan-practice/grafana-prometheus-monitoring/rules.yml:/etc/prometheus/rules.yml
+  # prometheus:
+  #   image: prom/prometheus
+  #   ports:
+  #     - "9090:9090"
+  #   user: "1000:1000"
+  #   extra_hosts:
+  #     - "host.docker.internal:host-gateway"
+  #   volumes:
+  #     # - /media/homepc/FILES/lavan-practice/grafana-prometheus-monitoring/prometheus_data:/prometheus
+  #     # - "/media/homepc/FILES/lavan-practice/grafana-prometheus-monitoring/prometheus.yml:/etc/prometheus/prometheus.yml"
+  #     # - "/media/homepc/FILES/lavan-practice/grafana-prometheus-monitoring/prometheus-data:/prometheus"
+  #     - /home/ramlavanpc/Desktop/lavan-practice/Site-Reliability-Engineering/grafana-prometheus-monitoring/prometheus_data:/prometheus
+  #     - /home/ramlavanpc/Desktop/lavan-practice/Site-Reliability-Engineering/grafana-prometheus-monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+  #     - /home/ramlavanpc/Desktop/lavan-practice/Site-Reliability-Engineering/grafana-prometheus-monitoring/rules.yml:/etc/prometheus/rules.yml
 
 # volumes:
 #   prometheus_data
