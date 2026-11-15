@@ -88,7 +88,7 @@ aws iam create-access-key --user-name user1
 #         "UserName": "user1",
 #         "AccessKeyId": "EMULATORAKY4SHWEAJLJ",
 #         "Status": "Active",
-#         "SecretAccessKey": "NwswnvBDn79RY7cjjtgmO7dISa6TcNoYmt8O6kSf",
+#         "SecretAccessKey": "GENERATE_NEW",
 #         "CreateDate": "2026-11-15T12:55:49.545000+00:00"
 #     }
 # }
@@ -105,3 +105,8 @@ export AWS_PROFILE=user1
 
 #now s3 ls bucket name wont work for user1, coz that role works only after assuming the role, so we will assume the role and then list the bucket
 
+
+aws sts assume-role \
+  --role-arn arn:aws:iam::000000000000:role/MyUserTaggedRole \
+  --role-session-name TaggedSessionTest \
+  --tags Key=Project,Value=Alpha Key=Environment,Value=Dev
